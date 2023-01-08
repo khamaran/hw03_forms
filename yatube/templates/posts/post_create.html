@@ -30,7 +30,7 @@
             {% endfor %}
           {% endif %}     
           {% if is_edit %}  
-                <form method="post" action="{% url 'posts:post_edit' post.author.username post.pk %}">
+                <form method="post" action="{% url 'posts:post_edit' post.author.username post.id %}">
           {% else %}
                 <form method="post" action="{% url 'posts:post_create' %}">
           {% endif %}
