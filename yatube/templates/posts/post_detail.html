@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} Пост {{ title }} {% endblock %}
+{% block title %} Пост {{ post.text|truncatechars:30 }} {% endblock %}
 
 {% block content %}
       <div class="row">
@@ -30,7 +30,6 @@
         </aside>
         <article class="col-12 col-md-9">
           <p> {{ post.text }} </p>
-        {% if not forloop.last %}<hr>{% endif %}    
         {% if user.id ==  post.author.id %}
           <a class="btn btn-primary" href="{% url 'posts:post_edit' post.id %}">
             Редактировать пост

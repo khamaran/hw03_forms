@@ -3,7 +3,6 @@
 {% block title %}{% if is_edit %} Редактировать запись {% else %} Добавить запись {% endif %}{% endblock %}
 
 {% block content %}
-    <main>
       <div class="container py-5">
         <div class="row justify-content-center">
           <div class="col-md-8 p-5">
@@ -29,8 +28,12 @@
                 {{ error|escape }}
               </div>
             {% endfor %}
-          {% endif %}       
+          {% endif %}     
+          {% if is_edit %}  
+                <form method="post" action="{% url 'posts:post_edit' post.author.username post.pk %}">
+          {% else %}
                 <form method="post" action="{% url 'posts:post_create' %}">
+          {% endif %}
                     {% csrf_token %}
                     {% for field in form %} 
                   <div class="form-group row my-3 p-3">
@@ -63,5 +66,4 @@
           </div>
         </div>
       </div>
-    </main>
 {% endblock %} 
