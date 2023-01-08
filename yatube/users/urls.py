@@ -20,19 +20,21 @@ urlpatterns = [
         name='login'
     ),
     path(
-        'password_change/', views.CustomPasswordChangeView.as_view(
-            template_name='users/password_change_form.html'),
-        name='password_change_form'),
-    path(
         'password_change/done/',
         PasswordChangeDoneView.as_view(
             template_name='users/password_change_done.html'),
         name='password_change_done'
     ),
     path(
-        'password_reset/', views.CustomPasswordResetView.as_view(
-            template_name='users/password_reset_form.html'),
-        name='password_reset_form'),
+        'password_change/', views.CustomPasswordChangeView.as_view(
+            template_name='users/password_change_form.html'),
+        name='password_change_form'),
+    path(
+        'reset/done/',
+        PasswordResetCompleteView.as_view(
+            template_name='users/password_reset_complete.html'),
+        name='password_reset_complete'
+    ),
     path(
         'password_reset/done/',
         PasswordResetDoneView.as_view(
@@ -46,9 +48,7 @@ urlpatterns = [
         name='password_reset_confirm'
     ),
     path(
-        'reset/done/',
-        PasswordResetCompleteView.as_view(
-            template_name='users/password_reset_complete.html'),
-        name='password_reset_complete'
-    ),
+        'password_reset/', views.CustomPasswordResetView.as_view(
+            template_name='users/password_reset_form.html'),
+        name='password_reset_form'),
 ]

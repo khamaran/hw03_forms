@@ -21,4 +21,4 @@ class CustomPasswordResetView(PasswordResetView):
 
 
 class CustomPasswordConfirmView(PasswordResetConfirmView):
-    success_url = reverse_lazy('users:password_reset_done')
+    success_url = reverse_lazy('users:password_reset_complete')
