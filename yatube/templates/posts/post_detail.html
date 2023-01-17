@@ -30,7 +30,7 @@
         </aside>
         <article class="col-12 col-md-9">
           <p> {{ post.text }} </p>
-        {% if user.id ==  post.author.id %}
+        {% if user ==  post.author %}
           <a class="btn btn-primary" href="{% url 'posts:post_edit' post.id %}">
             Редактировать пост
           </a>
