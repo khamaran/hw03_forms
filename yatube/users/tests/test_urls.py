@@ -11,26 +11,24 @@ class UserURLTests(TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.user = User.objects.create_user(username='auth')
+        # неавторизованный клиент
+        cls.guest_client = Client()
+        # авторизованый клиент
+        cls.user = User.objects.create(username='User')
+        cls.authorized_client = Client()
+        cls.authorized_client.force_login(cls.user)
+        # группа в БД
         cls.group = Group.objects.create(
             title='Тестовая группа',
-            slug='Тестовый слаг',
+            slug='test-slug',
             description='Тестовое описание',
         )
+        # пост в БД
         cls.post = Post.objects.create(
             author=cls.user,
             text='Тестовый пост',
+            id='100'
         )
-
-    def setUp(self):
-        # Создаем неавторизованный клиент
-        self.guest_client = Client()
-        # Создаем пользователя
-        self.user = User.objects.create_user(username='HasNoName')
-        # Создаем второй клиент
-        self.authorized_client = Client()
-        # Авторизуем пользователя
-        self.authorized_client.force_login(self.user)
 
     def test_login_url_exists_at_desired_location(self):
         """Страница /login/ доступна любому пользователю."""

@@ -9,7 +9,7 @@ test_posts: int = 15
 User = get_user_model()
 
 
-class PostURLTests(TestCase):
+class PostViewsTests(TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
