@@ -135,6 +135,8 @@ POSTS_COUNT = 10
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'posts:index'
 
+SIGNUP_URL = 'users:signup'
+SIGNUP_REDIRECT_URL = 'posts:index'
 
 #  подключаем движок filebased.EmailBackend
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
